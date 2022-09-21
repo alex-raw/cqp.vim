@@ -34,7 +34,10 @@ syn keyword cqpOption VerboseParser ShowSymtab ShowGconstraints ShowEvaltree
             \ ShowTargets AutoShow Timing Optimize AnchorNumberTarget
             \ AnchorNumberKeyword ExternalSort ExternalSortCommand
             \ DefaultNonbrackAttr AutoSubquery AutoSave SaveOnExit
+            \ eg egc lcv dc hb hc ql m lcd r dd hf wh ms sr p pg h pg h col pb
+            \ pp c lc rc ld rd sep po ps sta st as o ant ank es esc da sub
             \ contained
+
 
 syn keyword cqpKeyword from to within where with by not on right left without
             \ expand matches inclusive exclusive reverse desc
