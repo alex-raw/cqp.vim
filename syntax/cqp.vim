@@ -5,8 +5,6 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn region cqpStatement start=";" end=";" contains=ALL
-
 syn keyword cqpCommand info cat group count exit discard delete join
             \ subset save show sort sleep reduce size
             \ dump undump tabulate randomize diff difference inter intersect
@@ -19,7 +17,9 @@ syn keyword cqpBuiltinFunction f distance dist distabs int lbound rbound unify
 
 syn keyword cqpSet set nextgroup=cqpOption skipwhite
 
-syn keyword cqpOption VerboseParser ShowSymtab ShowGconstraints ShowEvaltree
+syn keyword cqpOption contained skipwhite
+            \ nextgroup=cqpBoolean,cqpString,cqpNull,cqpNumber
+            \ VerboseParser ShowSymtab ShowGconstraints ShowEvaltree
             \ ShowPatlist ShowDFA ShowCompDFA SymtabDebug ParserDebug TreeDebug
             \ EvalDebug InitialMatchlistDebug DebugSimulation SearchDebug
             \ ServerLog ServerDebug Snoop ParseOnly Silent ChildProcess
@@ -36,8 +36,10 @@ syn keyword cqpOption VerboseParser ShowSymtab ShowGconstraints ShowEvaltree
             \ DefaultNonbrackAttr AutoSubquery AutoSave SaveOnExit
             \ eg egc lcv dc hb hc ql m lcd r dd hf wh ms sr p pg h pg h col pb
             \ pp c lc rc ld rd sep po ps sta st as o ant ank es esc da sub
-            \ contained
 
+syn keyword cqpBoolean on off yes no contained
+syn keyword cqpNull NULL
+syn match cqpNumber '\<\d\+\>' display
 
 syn keyword cqpKeyword from to within where with by not on right left without
             \ expand matches inclusive exclusive reverse desc
@@ -55,10 +57,6 @@ syn match cqpSpecial /\.EOL\./
 syn match cqpAnchor /@/
 syn keyword cqpAnchor match matchend target keyword
 syn keyword cqpTarget leftmost rightmost nearest farthest
-
-syn keyword cqpBoolean on off contained
-syn keyword cqpNull NULL
-syn match cqpNumber '\<\d\+\>' display
 
 syn keyword cqpPattr word pos class hw lemma
 
@@ -98,7 +96,7 @@ hi def link cqpNull             Boolean
 hi def link cqpSet              Keyword
 hi def link cqpSpecial          Special
 hi def link cqpAnchor           Type
-hi def link cqpTarget           keyword
+hi def link cqpTarget           cqpAnchor
 hi def link cqpOption           Type
 hi def link cqpDelimiter        Delimiter
 hi def link cqpMacro            Macro
