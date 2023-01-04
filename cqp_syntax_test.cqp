@@ -1,0 +1,132 @@
+# Comment with TODO
+
+set pp no
+
+set Registry "/some/path/to/a/directory";
+
+info DICKENS;
+
+show corpora;
+
+show cd;
+
+"interesting";
+
+"interest(s|(ed|ing)(ly)?)?";
+
+"\?";
+
+"B\"ar";
+
+"wahrung" %cd;
+
+[word = "?" %l];
+
+[lemma = "pole" %c];
+
+[pos != "N.*"];
+
+set Context 20;
+
+set Context 5 words;
+
+show +pos -lemma;
+
+set ShowTagAttributes off;
+
+set PrintStructures "novel_title, chapter_num";
+
+set PrintStructures "";
+
+set PrintOptions hdr;
+
+set HistoryFile "/home/alexraw/.cqphistory";
+
+set DefaultNonbrackAttr lemma;
+
+[(lemma="go") & !(word="went"%c | word="gone"%c)]{1,2};
+
+"no" "sooner" []* "than" within s;
+
+sort Go by word %cd;
+
+sort Last by word descending reverse;
+
+sort by word %cd on matchend[-1] .. matchend[42];
+
+source "script.txt";
+
+Go = [lemma = "go"] "and" [];
+
+show named;
+
+count Go by lemma cut 5;
+
+size DICKENS:Go;
+
+cat Go > "go.txt";
+cat Go >> "go.txt";
+
+cat Go > "| grep '\?$' > go2.txt";
+
+"in" @[pos="DT"] [lemma="case"];
+"in" @[pos="DT"] @1[pos="J.*"]? [lemma="case"];
+size A target;
+
+group NP matchend word by target lemma;
+
+group NP target lemma group by matchend lemma within novel cut 10;
+
+A = intersection B C;
+reduce A to 10%;
+
+set A keyword nearest [pos="NNS?"] within right 5 words from match;
+set A keyword NULL;
+
+NPobj = [pos="V.*"] [pos="RB"]* <np> @[] []* </np>;
+
+
+set Elephants keyword leftmost [pos="JJ.*"] within 3 words;
+
+[pos = "ADJ." & _ < 500];
+
+a:[pos="DT"] [pos="JJ"]* b:[pos="NNS?"] :: distabs(a,b) >= 5;
+
+<np> []* ([pos="JJ.*"] []*){3,} </np>;
+
+[pos="JJ.*"] ([]* [pos="JJ.*"]){2} within np cut 20 expand to np;
+
+<np> a:[] []* </np> :: a.np_h = "bank";
+<np> a:[] []* </np> :: a.np_h = "bank";
+
+<np_h = "bank"> []* </np_h>;
+
+(<np_h "bank">|<np_h1 "bank">|<np_h2 "bank">) []* (</np_h2>|</np_h1>|</np_h>);
+
+"nuclear"%c "power"%c :EUROPARL-DE [lemma = "Kernkraft"];
+
+Time = from Zeit to EUROPARL-EN
+
+define $week +=
+"Monday Tuesday Wednesday Thursday Friday";
+
+[(lemma=RE($pref)) & (pos="VBG")];
+
+<match> [pos = "W.*"];
+
+[lemma = "horse" expand to p];
+
+/np[tietie];
+/codist[]
+
+define macro find('$0=Tag $1=Property')
+'<$0_f contains "$1"> []* </$0_f>';
+
+tabulate A match[-5]..match[-1] lemma, matchend[1]..matchend[5] lemma;
+
+[: ambiguity(/unify[agr, a,b,c]) >= 1 :]
+
+MU(meet [pos = "NN.*"] [lemma = "lovely"] -2 2);
+
+<<NP @0>> "after" <<@1 a: NP b:>> :: distabs(a, b) >= 2;
+
